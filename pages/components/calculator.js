@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import styles from '../../styles/Home.module.css'
 import * as math from "mathjs";
+
 function Calculator() {
-
-
     const [expression, setExpression] = useState("");
     const [screenVal, setScreenVal] = useState("");
     const [customVariables, setCustomVariables] = useState({});
@@ -14,7 +13,6 @@ function Calculator() {
     }
 
     function handleClick(input) {
-        setExpression((prevExpression) => prevExpression + input);
         switch (input) {
             case "AC":
                 clearScreen();
@@ -22,32 +20,62 @@ function Calculator() {
             case "=":
                 calculate();
                 break;
-            case "sin":
-                calculate();
-                break;
-            case "cos":
-                calculate();
-                break;
-            case "tan":
-                calculate();
-                break;
-            case "sinh":
-                calculate();
-                break;
-            case "cosh":
-                calculate();
-                break;
-            case "tanh":
-                calculate();
-                break;
             case "DEL":
                 backspace();
                 break;
+            case "Rad":
+                toggleMode();
+                break;
+            case "pi":
+                setExpression((prevExpression) => prevExpression + "pi");
+                break;
+            case "x²":
+                setExpression((prevExpression) => prevExpression + "^2");
+                break;
+            case "x³":
+                setExpression((prevExpression) => prevExpression + "^3");
+                break;
+            case "xy":
+                setExpression((prevExpression) => prevExpression + "^");
+                break;
+            case "ex":
+                setExpression((prevExpression) => prevExpression + "e^");
+                break;
+            case "10x":
+                setExpression((prevExpression) => prevExpression + "10^");
+                break;
+            case "sin":
+            case "cos":
+            case "tan":
+            case "sinh":
+            case "cosh":
+            case "tanh":
+                setExpression((prevExpression) => prevExpression + `${input}(`);
+                break;
+            case "2rtx":
+                setExpression((prevExpression) => prevExpression + "2rtx(");
+                break;
+            case "3rtx":
+                setExpression((prevExpression) => prevExpression + "3rtx(");
+                break;
+            case "yrtx":
+                setExpression((prevExpression) => prevExpression + "yrtx(");
+                break;
+            case "÷":
+                setExpression((prevExpression) => prevExpression + "/");
+                break;
+            case "x":
+                setExpression((prevExpression) => prevExpression + "*");
+                break;
             default:
+                setExpression((prevExpression) => prevExpression + input);
                 break;
         }
-
     }
+    
+    
+    
+    
 
     function calculate() {
         try {
@@ -61,9 +89,11 @@ function Calculator() {
                 sinh: mode === "rad" ? Math.sinh : math.sinh,
                 cosh: mode === "rad" ? Math.cosh : math.cosh,
                 tanh: mode === "rad" ? Math.tanh : math.tanh,
-                
+                rt2: (x) => Math.pow(x, 1/2),
+                rt3: (x) => Math.pow(x, 1/3),
+                rtY: (y, x) => Math.pow(x, 1/y)
             };
-
+    
             const result = math.evaluate(expression, allVariables);
             if (typeof result === "number" && !isNaN(result)) {
                 setScreenVal(Number(result).toFixed(4));
@@ -74,7 +104,8 @@ function Calculator() {
             setScreenVal("Error: Invalid expression");
         }
     }
-
+    
+    
     function clearScreen() {
         setExpression("");
         setScreenVal("");
@@ -90,7 +121,7 @@ function Calculator() {
     }
 
     return (
-        <><div className={styles.App}>
+        <div className={styles.App}>
             <div className={styles.calcbody}>
                 <div className={styles.inputsection}>
                     <input
@@ -101,7 +132,6 @@ function Calculator() {
                     <div className={styles.output}>Output: {screenVal}</div>
                 </div>
                 <div className={styles.buttonsection}>
-
                     <div className={styles.operators}>
                         {[
                             "(",
@@ -148,36 +178,28 @@ function Calculator() {
                             "sinh",
                             "cosh",
                             "tanh",
+                            "pi",
                             "Rand",
                             "0",
                             ".",
                             "=",
                             "DEL"
-
                         ].map((input) => (
                             <button
                                 className={`${styles.buttontext} ${['+', '-', 'x', '/', '^'].includes(input) ? styles.specialButton : ''}
-                            ${['AC', '+/-', '%', '/', 'DEL'].includes(input) ? styles.specialButtonAC : ''}`}
+                            ${['AC', '+/-', '%', '/', 'DEL', '='].includes(input) ? styles.specialButtonAC : ''}`}
                                 key={input}
                                 onClick={() => handleClick(input)}
                             >
                                 {input}
                             </button>
                         ))}
-
-
-
-                        <button className={styles.buttontext} onClick={() => handleClick("pi")}>Pi</button>
-
                     </div>
-
-
-
                 </div>
             </div>
             <div className={styles.variables}></div>
-        </div></>
+        </div>
     );
 }
 
-export default Calculator;
+export default Calculator
