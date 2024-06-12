@@ -1,0 +1,172 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 5%;
+  margin-top: 50px;
+}
+
+.calcbody {
+  background-color: #141414;
+  border: 1px solid #141414;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 45vw;
+  /* Adjusted container width */
+  padding: 2vw;
+  /* Adjusted padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inputsection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background-color: #202020;
+  border: none;
+  color: white;
+}
+
+.output {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: lightgrey;
+  font-weight: 900;
+  font-size: 2vw;
+}
+
+.buttonsection {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buttontext {
+  width: 43px;
+  height: 33px;
+  border: none;
+  background-color: #262323;
+  color: white;
+  border-radius: 21px;
+
+}
+.specialButton {
+  background-color: orange; 
+  color: white;
+  width: 43px;
+  height: 33px;
+  border: none;
+  border-radius: 21px;
+  font-weight: 800;
+
+}
+.specialButtonAC{
+    background-color: lightgray; 
+    color: black;
+    width: 43px;
+    height: 33px;
+    border: none;
+    border-radius: 21px;
+    font-weight: 800;
+
+}
+.operators {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+}
+
+.controlbuttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.numericpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+
+.button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.5em;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+}
+
+.button:active {
+  background-color: #d0d0d0;
+}
+
+
+.button:hover {
+  background-color: #1fb334;
+}
+
+.equalsbutton {
+  background-color: lightgrey;
+  margin: 5px;
+  width: 35px;
+  height: 30px;
+  border-radius: 14px;
+  border: none
+}
+
+.clearbutton {
+  background-color: lightgrey;
+  margin: 5px;
+  width: 35px;
+  height: 30px;
+  border-radius: 14px;
+  border: none
+}
+
+.backspacebutton {
+  background-color: lightgrey;
+  margin: 5px;
+  width: 35px;
+  height: 30px;
+  border-radius: 14px;
+  border: none
+}
+
+.variables {
+  margin-bottom: 5%;
+  color: #fff;
+  background-color: #272727;
+  flex-basis: 10%;
+}
+
+.variables h2 {
+  color: #fff;
+}
+
+.fields input {
+  background-color: #e8eef5;
+  border: 1px solid rgb(231, 228, 228);
+  width: 5vw;
+}
